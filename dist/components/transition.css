@@ -1,0 +1,1 @@
+.name-fade-enter-active,.name-fade-leave-active{transition:opacity linear .2s}.name-fade-enter,.name-fade-leave-to{opacity:0}@keyframes circling{from{transform:rotate(0)}to{transform:rotate(1turn)}}
