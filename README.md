@@ -47,3 +47,9 @@ import '{your-path}/node_modules/corgi-theme/dist/Checkbox.css'
 ### Custom Compiling
 
 You can modify files in following path: `corgi-theme/src`, and use gulp (I am using `gulp` and `gulp-sass` which can be found in `package.json`) to compile them.
+
+
+
+### License
+
+MIT
