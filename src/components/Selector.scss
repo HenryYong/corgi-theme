@@ -1,0 +1,54 @@
+/**
+ *  Selector style
+ *  Created @ 2017-09-15 16:43:35
+ *  Copyright (c) 2017 by Henry Yang.
+ *  All Rights Reserved.
+ *  License: MIT
+ */
+
+@import './../params';
+@import './../conf';
+
+.#{$name}-selector {
+    position: relative;
+    height: 100%;
+    .#{$name}-selector__icon {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%) rotate(0);
+        transition: transform linear .2s;
+        font-size: 12px;
+        color: $defaultBorderColor;
+        &.expanded {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+    .#{$name}-input__el {
+        cursor: pointer;
+        &:hover {
+            border-color: $hoverBorderColor;
+        }
+    }
+    .#{$name}-selector__icon {
+        cursor: pointer;
+        z-index: 1;
+        &:hover {
+            & + .#{$name}-input {
+                &__disabled {
+                    .#{$name}-input__el {
+                        border-color: $defaultBorderColor !important;
+                    }
+                }
+                .#{$name}-input__el {
+                    border-color: $hoverBorderColor;
+                }
+            }
+        }
+    }
+    &__disabled {
+        .#{$name}-selector__icon {
+            cursor: not-allowed;
+        }
+    }
+}

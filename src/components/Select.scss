@@ -1,5 +1,5 @@
 /**
- *  Select样式
+ *  Select Style
  *  Created @ 2017-08-30 16:24:37
  *  Copyright (c) 2017 by Henry Yang.
  *  All Rights Reserved.
@@ -15,35 +15,6 @@ $height: 36px;
     position: relative;
     width: 100%;
     height: $height;
-    &__wrapper {
-        position: relative;
-        height: 100%;
-        .#{$name}-select__icon {
-            position: absolute;
-            top: 50%;
-            right: 5px;
-            transform: translateY(-50%) rotate(0);
-            transition: all linear .2s;
-            font-size: 12px;
-            color: $defaultBorderColor;
-            &.expanded {
-                transform: translateY(-50%) rotate(180deg);
-            }
-        }
-    }
-    &__el {
-        .#{$name}-input__el {
-            cursor: pointer;
-            &:hover {
-                border-color: $hoverBorderColor;
-            }
-        }
-        &:hover {
-            & + .#{$name}-select__icon {
-                color: $hoverBorderColor;
-            }
-        }
-    }
     &__list {
         position: absolute;
         top: 40px;
@@ -52,72 +23,49 @@ $height: 36px;
         border: 1px solid $defaultBorderColor;
         border-radius: 3px;
         background-color: $default;
-        box-shadow:  0 0 1px 1px rgba(0, 0, 0, .1);
+        box-shadow:  0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
         z-index: $component;
-        &.hidden {
-            display: none;
+        & > ul {
+            padding: 5px 0;
         }
-        .#{$name}-select__item {
-            line-height: $height;
-            padding: 0 10px;
-            cursor: pointer;
-            color: $black-light;
-            @extend %clearfix;
+    }
+    &__option {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        &.is-hover {
+            background-color: $supplementary-light;
+        }
+        &.selected {
+            background-color: $primary;
+            color: $default;
             &:hover {
-                background-color: $supplementary-light;
+                background-color: $primaryActive;
             }
-            &.disabled {
-                color: $supplementary-dark;
-                cursor: not-allowed;
-                &:hover {
-                    background-color: transparent;
-                }
-            }
-            &.selected {
-                background-color: $primary;
-                color: $default;
-                &:hover {
-                    background-color: $primaryActive;
-                }
-            }
-            .icon-#{$name}-check {
-                display: none;
-                float: right;
-                line-height: 36px;
+        }
+        &.disabled {
+            color: $supplementary-dark;
+            cursor: not-allowed;
+            &:hover {
+                background-color: transparent;
             }
         }
     }
     &__disabled {
-        .#{$name}-input__el {
-            cursor: not-allowed;
-            &:hover {
-                border-color: $defaultBorderColor;
-            }
-        }
-        .#{$name}-select__el {
-            & + .#{$name}-select__icon {
-                color: $white-dark;
+        .#{$name}-input {
+            .#{$name}-input__el {
                 cursor: not-allowed;
-            }
-        }
-    }
-    &__clear {
-        &:hover {
-            & > .clear-icon {
-                border-radius: 50%;
-                background-color: $defaultBorderColor;
-                color: $default;
-                cursor: pointer;
-                transition: none;
+                background-color: $disabledBGC;
                 &:hover {
-                    background-color: $hoverBorderColor;
+                    border-color: $defaultBorderColor;
                 }
             }
         }
     }
     &__multiple {
-        .#{$name}-select__item {
+        .#{$name}-select__option {
             &.selected {
+                position: relative;
                 background-color: transparent;
                 color: $primary;
                 &:hover {
@@ -125,6 +73,20 @@ $height: 36px;
                 }
                 .icon-#{$name}-check {
                     display: block;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    display: inline-block;
+                    width: 8px;
+                    height: 4px;
+                    border: {
+                        left: 2px solid $primary;
+                        bottom: 2px solid $primary;
+                    }
+                    transform: rotate(300deg) translateY(-10px);
                 }
             }
         }
@@ -139,21 +101,25 @@ $height: 36px;
                 margin-bottom: 6px;
             }
         }
-        // position: absolute;
-        // top: 0;
-        // left: 0;
-        // padding-left: 5px;
-        // width: calc(100% - 25px);
-        // .#{$name}-tag {
-        //     // height: 26px;
-        //     margin: 6px 0 6px 5px;
-        // }
     }
-    &.#{$name}-select__editable {
-        .#{$name}-select__el {
-            &:focus {
-                border-color: $primary;
-            }
+    &__filter {
+        border: {
+            top: none;
+            left: none;
+            right: none;
         }
+        border-radius: 0;
+    }
+    .#{$name}-selector__extra {
+        .icon-#{$name}-close {
+            background-color: $supplementary-dark;
+            border-radius: 50%;
+        }
+    }
+    &__group {
+        padding-left: 5px;
+        font-size: 12px;
+        color: $grey-light;
+        cursor: default;
     }
 }
